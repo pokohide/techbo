@@ -16,10 +16,12 @@ gem 'coffee-rails', '~> 4.2'
 gem 'devise'
 
 
-
-
+# frontend
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
+gem 'semantic-ui-sass', git: 'https://github.com/doabit/semantic-ui-sass.git'
+
+# json
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
