@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  root to: 'entries#index'
+
+  
+
   get 'entries/show'
 
   get 'entries/new'

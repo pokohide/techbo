@@ -1,0 +1,14 @@
+doctype html
+head
+  == render 'templates/head'
+body class="#{controller_name} #{action_name}"
+  header
+    == render 'templates/header'
+  main
+    /= flash_message(flash)
+    section.hero-container
+      == yield :hero
+    section.main
+      == yield
+  footer
+    == render 'templates/footer'

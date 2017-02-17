@@ -17,9 +17,10 @@ gem 'devise'
 
 
 # frontend
+gem 'slim-rails'
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
-gem 'semantic-ui-sass', git: 'https://github.com/doabit/semantic-ui-sass.git'
+gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 
 # json
 gem 'jbuilder', '~> 2.5'

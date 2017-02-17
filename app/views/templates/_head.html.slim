@@ -1,0 +1,10 @@
+/= include_gon
+= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+= csrf_meta_tags
+/ - if content_for(:page_title)
+/   - set_meta_tags site: 'BeeApp', title: yield(:page_title), reverse: true
+/ - else
+/   - set_meta_tags site: 'BeeApp'
+/ = display_meta_tags(default_meta_tags)
