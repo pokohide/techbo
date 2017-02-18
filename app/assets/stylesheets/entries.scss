@@ -49,3 +49,77 @@
     }
   }
 }
+
+.diff-view {
+  // ul {
+  //   li {
+  //     list-style-type: none;
+  //
+  //     &.del {
+  //       background: #ffecec;
+  //       padding: 1em;
+  //     }
+  //     &.ins {
+  //       background: #eaffea;
+  //       padding: 1em;
+  //     }
+  //     del, ins {
+  //       text-decoration: none;
+  //     }
+  //   }
+  // }
+  .diff{
+    overflow:auto;
+    ul {
+      background: #fff;
+      overflow: auto;
+      font-size: 13px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: table;
+      width: 100%;
+
+      li {
+        padding: 0;
+        display: table-row;
+        margin: 0;
+        height: 1em;
+
+        &.ins {
+          background: #dfd;
+          color: #080;
+        }
+
+        &.del {
+          background: #fee;
+          color: #b00;
+        }
+
+        &.diff-comment {
+          display: none;
+        }
+
+        &.diff-block-info {
+          background: none repeat scroll 0 0 grey;
+        }
+      }
+    }
+    del, ins {
+      display: block;
+      text-decoration: none;
+    }
+    del, ins, span {
+      white-space: pre-wrap;
+      font-family: courier;
+    }
+    del strong {
+      font-weight: normal;
+      background: #fcc;
+    }
+    ins strong {
+      font-weight: normal;
+      background: #9f9;
+    }
+  }
+}

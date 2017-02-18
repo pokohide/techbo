@@ -1,6 +1,7 @@
 module MarkdownHelper
-  require "redcarpet"
-  require "coderay"
+  require 'redcarpet'
+  require 'coderay'
+  require 'diffy'
 
   class HTMLwithCoderay < Redcarpet::Render::HTML
     def block_code(code, language)
@@ -31,5 +32,10 @@ module MarkdownHelper
     }
     markdown = Redcarpet::Markdown.new(html_render, options)
     markdown.render(text).html_safe # rubocop:disable Rails/OutputSafety
+  end
+
+  def diff_for(before, after)
+    Diffy::SplitDiff.new(before, after, format: :html, :include_plus_and_minus_in_html => true).right.html_safe
+    #Diffy::Diff.new(before, after, :include_plus_and_minus_in_html => true).to_s(:html_simple).html_safe
   end
 end

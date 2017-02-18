@@ -19,6 +19,7 @@ gem 'devise'
 gem 'acts-as-taggable-on', '~> 4.0'
 
 # frontend
+gem 'gon'
 gem 'slim-rails'
 gem 'kaminari'
 gem 'jquery-rails'
@@ -36,6 +37,7 @@ gem 'dotenv-rails'
 # markdown
 gem 'redcarpet'
 gem 'coderay'
+gem 'diffy'
 
 # json
 gem 'jbuilder', '~> 2.5'

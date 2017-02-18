@@ -26,9 +26,11 @@ class EntriesController < ApplicationController
   end
 
   def edit
+    gon.before_body = @entry.body
   end
 
   def update
+    gon.before_body = @entry.body
     if @entry.update(entry_params)
       flash[:success] = '記事を編集しました。'
       redirect_to entry_path(@entry)

@@ -5,4 +5,9 @@ class Api::LibsController < ApplicationController
     md = markdown(params[:text])
     render json: md, status: 200
   end
+
+  def diffy
+    diff = diff_for(params[:before], params[:after])
+    render json: diff, status: 200
+  end
 end

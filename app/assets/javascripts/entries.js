@@ -42,8 +42,6 @@ $(document).ready(function() {
         type: 'POST',
         dataType: 'json',
         data: 'text=' + text
-      }).done(function(data) {
-        console.log(data)
       }).error(function(error) {
         console.log(error.responseText)
         var view = error.responseText
@@ -53,6 +51,23 @@ $(document).ready(function() {
       $('.md-view-field .diff-view').show()
       $('.md-view-field .md-view').hide()
       $('.md-view-field .text-view').hide()
+
+      var before = $('.text-view .before-body').text()
+      var after = $('.text-view textarea').val()
+
+      if(before === after) {
+        $('.md-view-field .diff-view').html('<p>差分なし</p>')
+        return
+      }
+      $.ajax({
+        url: '/api/diff',
+        type: 'POST',
+        dataType: 'json',
+        data: 'before=' + before + '&after=' + after
+      }).error(function(error) {
+        var view = error.responseText
+        $('.md-view-field .diff-view').html(view)
+      })
     }
   })
 })

@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
   # API
   namespace :api do
-    post 'md_view' => 'libs#md_view', as: 'md_view'
+    post 'md_view', to: 'libs#md_view', as: 'md_view'
+    post 'diff', to: 'libs#diffy', as: 'diff'
   end
 end

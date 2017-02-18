@@ -36,6 +36,8 @@
     .ui.bottom.attached.segment.md-view-field
       .text-view
         = f.text_area :body, rows: 8, placeholder: '本文'
+        .before-body(style='display:none')
+          = @entry.body
       .md-view
 
       .diff-view
