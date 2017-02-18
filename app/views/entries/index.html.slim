@@ -1,1 +1,9 @@
-h1 hoge
+.ui.container
+  - @entries.each do |entry|
+    .ui.card
+      .content
+        .header = entry.title
+        .meta
+          span = distance_of_time_in_words_to_now(entry.created_at)
+          / ここにタグ
+        p = truncate(entry.body)
