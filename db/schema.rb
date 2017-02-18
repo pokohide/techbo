@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170218151531) do
+ActiveRecord::Schema.define(version: 20170218163145) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "entry_id"
@@ -27,12 +27,13 @@ ActiveRecord::Schema.define(version: 20170218151531) do
     t.text     "body"
     t.boolean  "is_draft"
     t.integer  "user_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "view",               default: 0
   end
 
   create_table "taggings", force: :cascade do |t|
