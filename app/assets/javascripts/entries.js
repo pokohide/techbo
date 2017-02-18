@@ -12,7 +12,7 @@ $(document).ready(function() {
   $('#entry_tag_list').tagit()
   //$('#entry_is_draft').checkbox()
 
-  $('.reply').on('click', function(e) {
+  $('.comment-reply').on('click', function(e) {
     e.preventDefault()
     var reply = $(this).attr('data-reply')
     console.log(reply)
