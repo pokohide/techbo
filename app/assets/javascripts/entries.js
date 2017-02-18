@@ -10,7 +10,7 @@ $(document).ready(function() {
   })
 
   $('#entry_tag_list').tagit()
-  //$('#entry_is_draft').checkbox()
+  $('#entry_is_draft').checkbox()
 
   $('.comment-reply').on('click', function(e) {
     e.preventDefault()

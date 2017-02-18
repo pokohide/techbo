@@ -42,17 +42,13 @@
 
       .diff-view
 
+    .field
+      label.label = f.label :tag_list, 'タグ'
+      = f.text_field :tag_list, placeholder: 'タグ'
 
-    .two.fields
-      .field
-        .ui.right.labeled.left.icon.input
-          i.tags.icon
-          = f.text_field :tag_list
-          a.ui.tag.label 追加
-      
-      .field
-        .ui.checkbox
-          = f.check_box :is_draft, tabindex: 0, class: 'hidden'
-          label 記事を非公開にしますか?
+    .field
+      .ui.checkbox
+        = f.check_box :is_draft, tabindex: 0, class: 'hidden'
+        label 記事をまだ公開しませんか?
       
     = f.submit '更新する', class: 'ui button'
