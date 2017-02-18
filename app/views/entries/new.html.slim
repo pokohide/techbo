@@ -15,7 +15,7 @@
           - @entry.errors.full_messages.each do |msg|
             li = msg
     
-    = image_tag 'noimage.png', class: 'disabled medium ui image'
+    = image_tag 'noimage.png', class: 'large ui centered image preview-image'
     .field
       label.label.required = f.label :image, 'イメージ'
       = f.file_field :image

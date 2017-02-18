@@ -24,8 +24,8 @@ gem 'turbolinks', '~> 5'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 
 # for image
-gem 'paperclip'
-gem 'aws-sdk', '~> 2.3'
+gem "paperclip", "~> 5.0.0"
+gem 'aws-sdk', '~> 2'
 
 # for env
 gem 'dotenv-rails'

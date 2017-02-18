@@ -1,6 +1,9 @@
 .ui.main.text.container
   h1.ui.header = @entry.title
-  
+
+  - if @entry.image.present?
+    = image_tag @entry.image_url(:large), class: 'large ui centered image'
+
 .ui.borderless.main.menu
   .ui.text.container
     = link_to 'Tag1', '#', class: 'item'

@@ -4,7 +4,7 @@ $(document).ready(function() {
     var file = $(this).prop('files')[0]
     var fr = new FileReader()
     fr.onload = function() {
-      $('.perview-image').attr('src', fr.result).css('display', 'inline')
+      $('.preview-image').attr('src', fr.result).removeClass('disabled')
     }
     fr.readAsDataURL(file)
   })
