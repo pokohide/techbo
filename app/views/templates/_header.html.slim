@@ -15,6 +15,7 @@
             = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'item'
       - else
         .item
-          = link_to 'ログイン', new_user_session_path, class: 'ui button'
-        .item
-          = link_to 'サインイン', new_user_registration_path, class: 'ui primary button'
+          .ui.buttons
+            = link_to 'ログイン', new_user_session_path, class: 'ui positive button'
+            .or
+            = link_to 'サインイン', new_user_registration_path, class: 'ui button'
