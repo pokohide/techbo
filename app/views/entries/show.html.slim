@@ -21,9 +21,9 @@
 .ui.text.container(style='height: 600px')
   = @entry.body
 
-
 .ui.text.container
-  .ui.comments
+  .ui.minimal.comments
+    h3.ui.dividing.header コメント一覧
     - @entry.comments.each do |comment|
       == render partial: 'comments/comment', locals: { comment: comment }
   == render partial: 'comments/form', locals: { entry: @entry }
