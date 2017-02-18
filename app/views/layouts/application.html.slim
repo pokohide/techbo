@@ -4,6 +4,7 @@ head
 body class="#{controller_name} #{action_name}"
   header
     == render 'templates/header'
+    == yield :header
   main
     /= flash_message(flash)
     section.main

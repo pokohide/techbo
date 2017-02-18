@@ -1,2 +1,34 @@
-<h1>Entries#new</h1>
-<p>Find me in app/views/entries/new.html.erb</p>
+- content_for :header do
+  = render 'templates/breadcrumb', breadcrumb: { '記事作成': new_entry_path }
+/- set_seo(title: title, noindex: true, nofollow: true)
+
+= form_for @entry, url: entries_path, html: { method: :post, class: 'ui form' } do |f|
+  - if @entry.errors.any?
+    .ui.error.message
+      i.close.icon
+      .header
+        = "#{@event.errors.count}件のエラーがあります。"
+      ul.list
+        - @entry.errors.full_messages.each do |msg|
+          li = msg
+  / td(colspan='2')
+  /   = image_tag 'noimage.png', class: 'event-image'
+  /   label.event-image-label(for='event_image')
+  /     span.icon.is-small
+  /       i.fa.fa-plus
+  /     | イメージを選択
+  /     = f.file_field :image, style: 'display:none'
+  .field
+    label.label.required = f.label :title, 'タイトル'
+    = f.text_field :title, placeholder: '記事のタイトル'
+  
+  .field
+    label.label.required = f.label :body, '本文'
+    = f.text_area :body, rows: 8, placeholder: '本文'
+  
+  .field
+    .ui.checkbox
+      = f.check_box :is_draft, tabindex: 0, class: 'hidden'
+      label 記事をまだ公開しませんか?
+    
+  = f.submit '作成する', class: 'ui button'

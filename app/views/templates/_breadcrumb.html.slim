@@ -1,0 +1,5 @@
+.ui.small.breadcrumb
+  = link_to 'TOP', root_path
+  - breadcrumb.each do |page, url|
+    i.right.chevron.icon.divider
+    = link_to page, url
