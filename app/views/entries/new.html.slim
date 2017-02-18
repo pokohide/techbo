@@ -28,16 +28,13 @@
       label.label.required = f.label :body, '本文'
       = f.text_area :body, rows: 8, placeholder: '本文'
 
-    .two.fields
-      .field
-        .ui.right.labeled.left.icon.input
-          i.tags.icon
-          = f.text_field :tag_list, placeholder: 'タグ'
-          a.ui.tag.label 追加
-          
-      .field
-        .ui.checkbox
-          = f.check_box :is_draft, tabindex: 0, class: 'hidden'
-          label 記事をまだ公開しませんか?
+    .field
+      label.label = f.label :tag_list, 'タグ'
+      = f.text_field :tag_list, placeholder: 'タグ'
+
+    .field
+      .ui.checkbox
+        = f.check_box :is_draft, tabindex: 0, class: 'hidden'
+        label 記事をまだ公開しませんか?
 
     = f.submit '作成する', class: 'ui button'
