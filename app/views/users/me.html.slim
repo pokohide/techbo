@@ -1,4 +1,4 @@
-.ui.text.container
+.ui.text.container.top-bottom
   .ui.existing.segment
     .ui.grid
       .nine.wide.column
@@ -16,7 +16,7 @@
         - else
           = image_tag 'noimage.png', class: 'ui fluid image'
 
-.ui.text.container
+.ui.text.container.top-bottom
   .ui.three.statistics
     .statistic
       .value
@@ -34,7 +34,7 @@
       .label
         | Total Views
 
-.ui.text.container
+.ui.text.container.top-bottom
   .ui.divided.items
     h3.ui.header 記事一覧
     - @entries.each do |entry|
@@ -44,14 +44,16 @@
         .content
           = link_to entry.title, entry_path(entry), class: 'header'
           .meta
-            span.date = distance_of_time_in_words_to_now(entry.created_at)
+            span.date
+              = distance_of_time_in_words_to_now(entry.created_at)
+              | 前
           .description
             = truncate(entry.body, length: 150)
           .extra
             - entry.tags.each do |tag|
               = link_to tag.name, entries_path(tag: tag.name), class: 'ui label'
 
-.ui.text.container
+.ui.text.container.top-bottom
   .ui.feed
     h3.ui.dividing.header フィード
     - @entries.each do |entry|
@@ -63,4 +65,6 @@
             | 記事「
             b = entry.title
             | 」を公開しました。
-            .date = distance_of_time_in_words_to_now(entry.created_at)
+            .date
+              = distance_of_time_in_words_to_now(entry.created_at)
+              | 前

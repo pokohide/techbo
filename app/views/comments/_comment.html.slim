@@ -9,7 +9,9 @@
     a.author
       = comment.from
     .metadata
-      .date = distance_of_time_in_words_to_now(comment.created_at)
+      .date
+        = distance_of_time_in_words_to_now(comment.created_at)
+        | 前
     .text
       = comment.body
     .actions
