@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def me
     if user_signed_in?
       @user = current_user
+      @entries = @user.entries
     else
       redirect_to root_path
     end

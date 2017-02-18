@@ -1,0 +1,17 @@
+h1 User#me
+p Find me in app/views/user/me.html.slim
+
+= @user.email
+
+.ui.text.container
+  .ui.feed
+    - @entries.each do |entry|
+      .event
+        .label
+          i.pencil.icon
+        .content
+          .summary
+            | 記事「
+            b = entry.title
+            | 」を公開しました。
+            .date = distance_of_time_in_words_to_now(entry.created_at)
