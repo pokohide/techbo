@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :entries
 
-  has_attached_file :avater,
+  has_attached_file :avatar,
     styles: {
       thumb: '100x100>',
       square: '200x200#'
@@ -16,7 +16,7 @@ class User < ApplicationRecord
     path: 'users/:style/:id.:extension',
     url: ':s3_domain_url'
 
-  validates_attachment_content_type :avater,
+  validates_attachment_content_type :avatar,
     content_type: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'],
     size: { less_than: 4.megabytes }
 
