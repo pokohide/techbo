@@ -20,13 +20,6 @@
       label.label.required = f.label :image, 'イメージ'
       = f.file_field :image
 
-    / td(colspan='2')
-    /   = image_tag 'noimage.png', class: 'event-image'
-    /   label.event-image-label(for='event_image')
-    /     span.icon.is-small
-    /       i.fa.fa-plus
-    /     | イメージを選択
-    /     = f.file_field :image, style: 'display:none'
     .field
       label.label.required = f.label :title, 'タイトル'
       = f.text_field :title, placeholder: '記事のタイトル'

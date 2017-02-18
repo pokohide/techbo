@@ -15,13 +15,15 @@
         ul.list
           - @entry.errors.full_messages.each do |msg|
             li = msg
-    / td(colspan='2')
-    /   = image_tag 'noimage.png', class: 'event-image'
-    /   label.event-image-label(for='event_image')
-    /     span.icon.is-small
-    /       i.fa.fa-plus
-    /     | イメージを選択
-    /     = f.file_field :image, style: 'display:none'
+    
+    - if @entry.image.present?
+      = image_tag @entry.image.to_s, class: 'large ui centered image preview-image'
+    - else
+      = image_tag 'noimage.png', class: 'large ui centered image preview-image'
+    .field
+      label.label.required = f.label :image, 'イメージ'
+      = f.file_field :image
+
     .field
       label.label.required = f.label :title, 'タイトル'
       = f.text_field :title, placeholder: '記事のタイトル'
