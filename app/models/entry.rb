@@ -22,9 +22,11 @@ class Entry < ApplicationRecord
 
   def image_url(style=nil, expires_in=90.minutes)
     if image.present?
-      image.s3_object(style).url_for(:read, expires: expires_in).to_s
+      image.url(style)
+      #image.s3_object(style).url_for(:read, expires: expires_in).to_s
     else
-      'https://s3-ap-northeast-1.amazonaws.com/beeapp-production/no-img.png'
+      asset_path 'noimage.png'
+      #'https://s3-ap-northeast-1.amazonaws.com/beeapp-production/no-img.png'
     end
   end
 

@@ -21,4 +21,5 @@
 $(document).ready(function() {
 
   $('.ui.dropdown').dropdown({ on: 'hover' })
+  $('.special.cards .image').dimmer({ on: 'hover' })
 })
