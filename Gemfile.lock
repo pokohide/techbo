@@ -47,6 +47,9 @@ GEM
       tzinfo (~> 1.1)
     acts-as-taggable-on (4.0.0)
       activerecord (>= 4.0)
+    after_commit_action (1.0.1)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
     arel (7.1.4)
     aws-sdk (2.7.11)
       aws-sdk-resources (= 2.7.11)
@@ -71,6 +74,10 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.4)
+    counter_culture (1.1.1)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      after_commit_action (~> 1.0)
     debug_inspector (0.0.2)
     devise (4.2.0)
       bcrypt (~> 3.0)
@@ -235,6 +242,7 @@ DEPENDENCIES
   byebug
   coderay
   coffee-rails (~> 4.2)
+  counter_culture
   devise
   diffy
   dotenv-rails

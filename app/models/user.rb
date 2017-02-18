@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :entries
+  has_many :likes
   acts_as_taggable_on :interests
 
   has_attached_file :avatar,

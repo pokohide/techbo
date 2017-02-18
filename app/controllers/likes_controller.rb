@@ -1,14 +1,18 @@
 class LikesController < ApplicationController
+  before_action :set_entry, only: [:create, :destroy]
+
   def create
-    @like = Like.create(user_id: current_user.id, entry_id: params[:entry_id])
-    @likes = Like.where(entry_id: params[:entry_id])
-    @entries = Entry.all
+    @like = current_user.likes.create(entry_id: @entry.id)
   end
 
   def destroy
-    like = Like.find_by(user_id: current_user.id, entry_id: params[:entry_id])
+    like = current_user.likes.find_by(entry_id: @entry.id)
     like.destroy
-    @likes = Like.where(entry_id: params[:entry_id])
-    @entries = Entry.all
+  end
+
+  private
+
+  def set_entry
+    @entry = Entry.find(params[:entry_id])
   end
 end

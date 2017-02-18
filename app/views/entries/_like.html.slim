@@ -1,0 +1,17 @@
+span.left.floated.like
+  - if user_signed_in?
+    - if entry.liked_by?(current_user.id)
+      - like = Like.find_by(user_id: current_user.id, entry_id: entry.id)
+      = link_to entry_like_path(like, entry_id: entry.id), method: :delete, id: 'like-button', remote: true do
+        i.like.liked.icon
+        = entry.like_count
+        | Likes
+    - else
+      = link_to entry_likes_path(entry), id: 'like-button', method: :post, remote: true do
+        i.like.icon
+        = entry.like_count
+        | Likes
+  - else
+    i.like.icon
+    = entry.like_count
+    | Likes

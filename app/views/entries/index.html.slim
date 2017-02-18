@@ -1,6 +1,6 @@
 .ui.container
   - @entries.each do |entry|
-    .ui.card
+    .ui.card id="entry-#{entry.id}"
       .content
         .header
           = link_to entry.title, entry_path(entry)
@@ -10,8 +10,11 @@
         .description
           p = entry.body
       .extra.content
-        i.eye.icon
-        = "#{entry.view} Views"
+      
+        /i.eye.icon
+        /= "#{entry.view} Views"
+        .like-field
+          == render partial: 'entries/like', locals: { entry: entry }
         .right.floated.author
           = image_tag 'anonymous.png', class: 'entry-author-image'
           | Matt

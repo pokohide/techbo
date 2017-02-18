@@ -1,0 +1,2 @@
+console.log('#entry-<%= @entry.id %> .like-field');
+$('#entry-<%= @entry.id %> .like-field').html('<%= j(render partial: "entries/like", locals: { entry: @entry }) %>');

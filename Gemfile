@@ -39,6 +39,9 @@ gem 'redcarpet'
 gem 'coderay'
 gem 'diffy'
 
+# like
+gem 'counter_culture'
+
 # json
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
