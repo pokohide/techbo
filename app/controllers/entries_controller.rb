@@ -10,10 +10,17 @@ class EntriesController < ApplicationController
   end
 
   def new
-    @entry = Entry.new
+    @entry = current_user.entries.build
   end
 
   def create
+    @entry = current_user.entries.new(entry_params)
+    if @entry.save
+      flash[:success] = '記事を作成しました。'
+      redirect_to entry_path(@entry)
+    else
+      render 'new'
+    end
   end
 
   def edit
@@ -32,6 +39,6 @@ class EntriesController < ApplicationController
   end
 
   def entry_params
-
+    params.require(:entry).permit(:id, :title, :body, :is_draft)
   end
 end
