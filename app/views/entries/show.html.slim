@@ -2,7 +2,8 @@
   h1.ui.header = @entry.title
 
   - if @entry.image.present?
-    = image_tag @entry.image_url(:large), class: 'large ui centered image'
+    /= image_tag @entry.image_url(:large), class: 'large ui centered image'
+    = image_tag @entry.image.to_s, class: 'ui fluid image'
 
 .ui.borderless.main.menu
   .ui.text.container
