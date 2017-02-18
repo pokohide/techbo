@@ -3,7 +3,7 @@ class EntriesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @entries = Entry.all
+    @entries = Entry.all.page(params[:page])
   end
 
   def show
