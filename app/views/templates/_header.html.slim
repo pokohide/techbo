@@ -12,7 +12,7 @@
           .menu
             = link_to 'マイページ', me_path, class: 'item'
             = link_to 'プロフィール編集', edit_user_path, class: 'item'
-            = link_to 'ログアウト', destroy_user_session_path, class: 'item'
+            = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'item'
       - else
         .item
           = link_to 'ログイン', new_user_session_path, class: 'ui button'

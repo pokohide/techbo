@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     # end
   end
 
-  devise_for :users
+  devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout' } do
+    delete '/logout', to: 'device/sessions#destroy', as: 'destroy_user_session'
+  end
 
   #devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout' },
   #                 controllers: { omniauth_callbacks: 'omniauth_callbacks', registrations: 'users/registrations' }

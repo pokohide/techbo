@@ -15,6 +15,7 @@ $(document).ready(function() {
   $('.comment-reply').on('click', function(e) {
     e.preventDefault()
     var reply = $(this).attr('data-reply')
-    console.log(reply)
+    var comment = $('#comment_body').val()
+    $('#comment_body').val('@' + reply + "\n" + comment)
   })
 })
