@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: 'entries#index'
 
   resources :entries do
-    #resources :comments, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy]
   end
 
   devise_for :users

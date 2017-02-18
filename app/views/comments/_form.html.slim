@@ -1,0 +1,4 @@
+= form_for([entry, entry.comments.build], remote: true, class: 'ui reply form') do |cf|
+  .field
+    = cf.text_area :body, placeholder: 'コメント本文'
+  = cf.submit 'コメントする', class: 'ui primary submit button'
