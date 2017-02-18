@@ -8,4 +8,6 @@ $(document).ready(function() {
     }
     fr.readAsDataURL(file)
   })
+
+  $('#entry_tag_list').tagit()
 })

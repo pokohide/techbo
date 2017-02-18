@@ -4,17 +4,17 @@
 .ui.text.container
   .ui.main.text.container
     h1.ui.header 記事の作成
-    
+
   = form_for @entry, url: entries_path, html: { method: :post, class: 'ui form' } do |f|
     - if @entry.errors.any?
       .ui.error.message
         i.close.icon
         .header
-          = "#{@event.errors.count}件のエラーがあります。"
+          = "#{@entry.errors.count}件のエラーがあります。"
         ul.list
           - @entry.errors.full_messages.each do |msg|
             li = msg
-    
+
     = image_tag 'noimage.png', class: 'large ui centered image preview-image'
     .field
       label.label.required = f.label :image, 'イメージ'
@@ -23,14 +23,21 @@
     .field
       label.label.required = f.label :title, 'タイトル'
       = f.text_field :title, placeholder: '記事のタイトル'
-    
+
     .field
       label.label.required = f.label :body, '本文'
       = f.text_area :body, rows: 8, placeholder: '本文'
-    
-    .field
-      .ui.checkbox
-        = f.check_box :is_draft, tabindex: 0, class: 'hidden'
-        label 記事をまだ公開しませんか?
-      
+
+    .two.fields
+      .field
+        .ui.right.labeled.left.icon.input
+          i.tags.icon
+          = f.text_field :tag_list, placeholder: 'タグ'
+          a.ui.tag.label 追加
+          
+      .field
+        .ui.checkbox
+          = f.check_box :is_draft, tabindex: 0, class: 'hidden'
+          label 記事をまだ公開しませんか?
+
     = f.submit '作成する', class: 'ui button'

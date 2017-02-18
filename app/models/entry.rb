@@ -3,6 +3,10 @@ class Entry < ApplicationRecord
   has_many :comments
   acts_as_taggable_on :tags
 
+  validates :title, presence: true
+  validates :body, presence: true
+  validates :image, presence: true
+
   has_attached_file :image,
                     styles: {
                       medium: '400x400>',
@@ -11,7 +15,6 @@ class Entry < ApplicationRecord
                     storage: :s3,
                     s3_credentials: "#{Rails.root}/config/s3.yml",
                     path: 'users/:style/:id.:extension',
-                    s3_permissions: :public,
                     url: ':s3_domain_url'
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 

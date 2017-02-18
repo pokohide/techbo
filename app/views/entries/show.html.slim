@@ -7,16 +7,11 @@
 
 .ui.borderless.main.menu
   .ui.text.container
-    = link_to 'Tag1', '#', class: 'item'
-    = link_to 'Tag2', '#', class: 'item'
-    = link_to 'User', '#', class: 'item'
-    = link_to '#', class: 'ui right floated dropdown item' do
-      | User
-      i.dropdown.icon
-      .menu
-        .item Link Item
-        .item Link Item
-        .divider
+    - @entry.tags.each do |tag|
+      = link_to "#{tag.name}(#{tag.taggings_count})", entries_path(tag: tag.name), class: 'item'
+    .ui.right.item
+      = image_tag 'anonymous.png', class: 'ui avatar image'
+      span = @entry.user.email
 
 .ui.text.container.entry-body
   = @entry.body
