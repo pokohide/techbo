@@ -19,9 +19,10 @@ class User < ApplicationRecord
 
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
-  def image_url(style)
-    if avater.present?
-      avater.s3_object(style).url_for(:read, secure: true)
+  def avatar_url(style)
+    if avatar.present?
+      avatar.url(style)
+      #avater.s3_object(style).url_for(:read, secure: true)
     else
       'https://s3-ap-northeast-1.amazonaws.com/beeapp-production/no-img.png'
     end

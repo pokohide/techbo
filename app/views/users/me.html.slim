@@ -1,4 +1,20 @@
-= @user.email
+.ui.text.container
+  .ui.existing.segment
+    .ui.grid
+      .nine.wide.column
+        .ui.list
+          .item
+            i.user.icon
+            .content = @user.name || 'Anonymous'
+          .item
+            i.mail.icon
+            .content = @user.email
+      
+      .six.wide.column
+        - if @user.avatar.present?
+          = image_tag @user.avatar.url(:square), class: 'ui fluid image'
+        - else
+          = image_tag 'noimage.png', class: 'ui fluid image'
 
 .ui.text.container
   .ui.three.statistics
