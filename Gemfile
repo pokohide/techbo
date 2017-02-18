@@ -15,6 +15,8 @@ gem 'coffee-rails', '~> 4.2'
 # for user
 gem 'devise'
 
+# for tag
+gem 'acts-as-taggable-on', '~> 4.0'
 
 # frontend
 gem 'slim-rails'
