@@ -1,6 +1,3 @@
-h1 User#me
-p Find me in app/views/user/me.html.slim
-
 = @user.email
 
 .ui.text.container
@@ -35,8 +32,8 @@ p Find me in app/views/user/me.html.slim
           .description
             = truncate(entry.body, length: 150)
           .extra
-            .ui.label IMAX
-            .ui.label HOGEHOGE
+            - entry.tags.each do |tag|
+              = link_to tag.name, entries_path(tag: tag.name), class: 'ui label'
 
 .ui.text.container
   .ui.feed
