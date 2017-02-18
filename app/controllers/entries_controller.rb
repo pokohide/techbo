@@ -40,6 +40,10 @@ class EntriesController < ApplicationController
   def destroy
   end
 
+  def tag_cloud
+    @tags = Entry.tag_counts_on(:tags)#.order('count DESC')
+  end
+
   private
 
   def set_entry
