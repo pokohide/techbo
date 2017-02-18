@@ -1,2 +1,38 @@
-<h1>Entries#edit</h1>
-<p>Find me in app/views/entries/edit.html.erb</p>
+- content_for :header do
+  = render 'templates/breadcrumb', breadcrumb: { "#{@entry.title}": entry_path(@entry), \
+    '記事編集': edit_entry_path(@entry) }
+
+.ui.text.container
+  .ui.main.text.container
+    h1.ui.header 記事の作成
+    
+  = form_for @entry, url: entry_path, html: { method: :put, class: 'ui form' } do |f|
+    - if @entry.errors.any?
+      .ui.error.message
+        i.close.icon
+        .header
+          = "#{@event.errors.count}件のエラーがあります。"
+        ul.list
+          - @entry.errors.full_messages.each do |msg|
+            li = msg
+    / td(colspan='2')
+    /   = image_tag 'noimage.png', class: 'event-image'
+    /   label.event-image-label(for='event_image')
+    /     span.icon.is-small
+    /       i.fa.fa-plus
+    /     | イメージを選択
+    /     = f.file_field :image, style: 'display:none'
+    .field
+      label.label.required = f.label :title, 'タイトル'
+      = f.text_field :title, placeholder: '記事のタイトル'
+    
+    .field
+      label.label.required = f.label :body, '本文'
+      = f.text_area :body, rows: 8, placeholder: '本文'
+    
+    .field
+      .ui.checkbox
+        = f.check_box :is_draft, tabindex: 0, class: 'hidden'
+        label 記事をまだ公開しませんか?
+      
+    = f.submit '更新する', class: 'ui button'

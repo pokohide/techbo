@@ -27,6 +27,12 @@ class EntriesController < ApplicationController
   end
 
   def update
+    if @entry.update(entry_params)
+      flash[:success] = '記事を編集しました。'
+      redirect_to entry_path(@entry)
+    else
+      render 'edit'
+    end
   end
 
   def destroy

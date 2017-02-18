@@ -31,4 +31,8 @@ $(document).ready(function() {
   // create sidebar and attach to menu open
   $('.ui.sidebar').sidebar('attach events', '.toc.item')
 
+
+  $('.main.menu').visibility({ type: 'fixed' })
+  $('.main.menu .ui.dropdown').dropdown({ on: 'hover' })
+
 })

@@ -1,2 +1,18 @@
-<h1>Entries#show</h1>
-<p>Find me in app/views/entries/show.html.erb</p>
+.ui.main.text.container
+  h1.ui.header = @entry.title
+  
+.ui.borderless.main.menu
+  .ui.text.container
+    = link_to 'Tag1', '#', class: 'item'
+    = link_to 'Tag2', '#', class: 'item'
+    = link_to 'User', '#', class: 'item'
+    = link_to '#', class: 'ui right floated dropdown item' do
+      | User
+      i.dropdown.icon
+      .menu
+        .item Link Item
+        .item Link Item
+        .divider
+
+.ui.text.container(style='height: 600px')
+  = @entry.body
