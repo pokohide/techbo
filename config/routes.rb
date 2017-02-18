@@ -20,4 +20,9 @@ Rails.application.routes.draw do
   get '/me/edit', to: 'users#edit', as: 'edit_user'
   put '/me', to: 'users#update', as: 'update_user'
   get '/me', to: 'users#me', as: 'me'
+
+  # API
+  namespace :api do
+    post 'md_view' => 'libs#md_view', as: 'md_view'
+  end
 end
