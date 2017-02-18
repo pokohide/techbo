@@ -1,11 +1,14 @@
-.ui.main.text.container
+.ui.text.container
   h1.ui.header = @entry.title
 
   - if @entry.image.present?
     = image_tag @entry.image.url(:large), class: 'ui fluid image'
 
-.ui.borderless.main.menu
+.ui.menu
   .ui.text.container
+    .item
+      i.calendar.outline.icon
+      = l @entry.created_at, format: :short
     - @entry.tags.each do |tag|
       = link_to "#{tag.name}(#{tag.taggings_count})", entries_path(tag: tag.name), class: 'item'
     .ui.right.item
