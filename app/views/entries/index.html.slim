@@ -11,7 +11,7 @@
           p = entry.body
       .extra.content
         i.eye.icon
-        | 121 Views
+        = "#{entry.view} Views"
         .right.floated.author
           = image_tag 'anonymous.png', class: 'entry-author-image'
           | Matt

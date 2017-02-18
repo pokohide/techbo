@@ -8,6 +8,7 @@ class EntriesController < ApplicationController
 
   def show
     @comment = Comment.new
+    @entry.update(view: @entry.view + 1)
   end
 
   def new
