@@ -8,6 +8,18 @@
   }
 }
 
+.entries.index {
+  .main {
+    padding: 2em 0;
+
+    .entry-author-image {
+      width: 1.3em;
+      height: 1.3em;
+      margin-right: .5em;
+    }
+  }
+}
+
 .entries.show {
   body {
     background: #fff;

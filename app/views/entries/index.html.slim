@@ -12,5 +12,8 @@
       .extra.content
         i.eye.icon
         | 121 Views
-  
+        .right.floated.author
+          = image_tag 'anonymous.png', class: 'entry-author-image'
+          | Matt
+
 = paginate @entries
