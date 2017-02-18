@@ -4,7 +4,43 @@ p Find me in app/views/user/me.html.slim
 = @user.email
 
 .ui.text.container
+  .ui.three.statistics
+    .statistic
+      .value
+        = @entries.count
+      .label
+        | Entries
+    .statistic
+      .value
+        | 1111
+      .label
+        | Total Likes
+    .statistic
+      .value
+        | 1234
+      .label
+        | Total Views
+
+.ui.text.container
+  .ui.divided.items
+    h3.ui.header 記事一覧
+    - @entries.each do |entry|
+      .item
+        .image
+          = image_tag entry.image.to_s
+        .content
+          = link_to entry.title, entry_path(entry), class: 'header'
+          .meta
+            span.date = distance_of_time_in_words_to_now(entry.created_at)
+          .description
+            = truncate(entry.body, length: 150)
+          .extra
+            .ui.label IMAX
+            .ui.label HOGEHOGE
+
+.ui.text.container
   .ui.feed
+    h3.ui.dividing.header フィード
     - @entries.each do |entry|
       .event
         .label
