@@ -8,13 +8,14 @@ class User < ApplicationRecord
 
   has_attached_file :avater,
     styles: {
-      thumb: '100x100',
-      medium: '200x200'
+      thumb: '100x100>',
+      square: '200x200#'
     },
     storage: :s3,
     s3_credentials: "#{Rails.root}/config/s3.yml",
     path: 'users/:style/:id.:extension',
     url: ':s3_domain_url'
+
   validates_attachment_content_type :avater,
     content_type: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'],
     size: { less_than: 4.megabytes }

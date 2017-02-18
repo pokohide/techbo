@@ -27,6 +27,9 @@ gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 gem 'paperclip'
 gem 'aws-sdk', '~> 2.3'
 
+# for env
+gem 'dotenv-rails'
+
 # json
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production

@@ -14,6 +14,12 @@
         ul.list
           - @entry.errors.full_messages.each do |msg|
             li = msg
+    
+    = image_tag 'noimage.png', class: 'disabled medium ui image'
+    .field
+      label.label.required = f.label :image, 'イメージ'
+      = f.file_field :image
+
     / td(colspan='2')
     /   = image_tag 'noimage.png', class: 'event-image'
     /   label.event-image-label(for='event_image')
