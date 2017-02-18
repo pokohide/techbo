@@ -23,6 +23,10 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 
+# for image
+gem 'paperclip'
+gem 'aws-sdk', '~> 2.3'
+
 # json
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
