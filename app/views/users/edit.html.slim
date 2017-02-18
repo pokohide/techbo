@@ -3,42 +3,37 @@
     'ユーザ編集': edit_user_path }
 
 .ui.text.container
-  .ui.main.text.container
-    h1.ui.header ユーザ編集
-  
-  = form_for @user, url: update_user_path, html: { method: :put, class: 'ui form' } do |f|
-    - if @user.errors.any?
-      .ui.error.message
-        i.close.icon
-        .header
-          = "#{@user.errors.count}件のエラーがあります。"
-        ul.list
-          - @user.errors.full_messages.each do |msg|
-            li = msg
+  .ui.existing.segment
+    .ui.main.centered.text.container
+      h1.ui.centered.header ユーザ編集
 
-    = image_tag 'noimage.png', class: 'large ui centered image preview-image'
-    .field
-      label.label.required = f.label :image, 'イメージ'
-      = f.file_field :image
-
-    .field
-      label.label.required = f.label :title, 'タイトル'
-      = f.text_field :title, placeholder: '記事のタイトル'
-
-    .field
-      label.label.required = f.label :body, '本文'
-      = f.text_area :body, rows: 8, placeholder: '本文'
-
-    .two.fields
-      .field
-        .ui.right.labeled.left.icon.input
-          i.tags.icon
-          = f.text_field :tag_list, placeholder: 'タグ'
-          a.ui.tag.label 追加
+    = form_for @user, url: update_user_path, html: { method: :put, class: 'ui form' } do |f|
+      - if @user.errors.any?
+        .ui.error.message
+          i.close.icon
+          .header
+            = "#{@user.errors.count}件のエラーがあります。"
+          ul.list
+            - @user.errors.full_messages.each do |msg|
+              li = msg
+      .ui.grid
+        .nine.wide.column
+          .field
+            label.label = f.label :name, 'ハンドルネーム'
+            = f.text_field :name
           
-      .field
-        .ui.checkbox
-          = f.check_box :is_draft, tabindex: 0, class: 'hidden'
-          label 記事をまだ公開しませんか?
+          .field
+            label.label.required = f.label :email, 'メールアドレス'
+            = f.email_field :email, readonly: true
+          
+        .seven.wide.column
+          .field
+            label.label = f.label :avatar, 'アバター'
+          - if @user.avatar.present?
+            = image_tag @user.avatar.url(:square), class: 'ui fluid image preview-image'
+          - else
+            = image_tag 'noimage.png', class: 'ui fluid image preview-image'
+          .field
+            = f.file_field :avatar, id: 'watch-image'
 
-    = f.submit '作成する', class: 'ui button'
+      = f.submit '更新する', class: 'ui teal button'

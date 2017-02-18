@@ -22,7 +22,7 @@
       = image_tag 'noimage.png', class: 'large ui centered image preview-image'
     .field
       label.label.required = f.label :image, 'イメージ'
-      = f.file_field :image
+      = f.file_field :image, id: 'watch-image'
 
     .field
       label.label.required = f.label :title, 'タイトル'
@@ -38,7 +38,7 @@
           i.tags.icon
           = f.text_field :tag_list
           a.ui.tag.label 追加
-          
+      
       .field
         .ui.checkbox
           = f.check_box :is_draft, tabindex: 0, class: 'hidden'

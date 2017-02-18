@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $('#entry_image').on('change', function() {
+  $('#watch-image').on('change', function() {
     if(!this.files.length) return
     var file = $(this).prop('files')[0]
     var fr = new FileReader()
@@ -10,4 +10,5 @@ $(document).ready(function() {
   })
 
   $('#entry_tag_list').tagit()
+  //$('#entry_is_draft').checkbox()
 })
