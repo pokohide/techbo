@@ -18,12 +18,13 @@
         .item Link Item
         .divider
 
-.ui.text.container(style='height: 600px')
+.ui.text.container.entry-body
   = @entry.body
 
 .ui.text.container
   .ui.minimal.comments
     h3.ui.dividing.header コメント一覧
-    - @entry.comments.each do |comment|
-      == render partial: 'comments/comment', locals: { comment: comment }
+    .comments-container
+      - @entry.comments.each do |comment|
+        == render partial: 'comments/comment', locals: { comment: comment }
   == render partial: 'comments/form', locals: { entry: @entry }

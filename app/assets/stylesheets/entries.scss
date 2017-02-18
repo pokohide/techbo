@@ -31,5 +31,14 @@
         box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
       }
     }
+
+    .entry-body {
+      padding: 3em;
+    }
+
+    .comments-container {
+      max-height: 300px;
+      overflow-y: scroll;
+    }
   }
 }

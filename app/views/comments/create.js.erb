@@ -2,5 +2,5 @@
   alert('エラー発生');
 <% else %>
   $('#comment_body').val('');
-  $('.comments').append('<%= j(render partial: "comments/comment", locals: {comment: @comment}) %>');
+  $('.comments-container').append('<%= j(render partial: "comments/comment", locals: {comment: @comment}) %>');
 <% end %>
