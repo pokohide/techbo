@@ -11,5 +11,7 @@ Rails.application.routes.draw do
   #                 controllers: { omniauth_callbacks: 'omniauth_callbacks', registrations: 'users/registrations' }
 
   get '/users/:id', to: 'users#show', as: 'user'
+  get '/me/edit', to: 'users#edit', as: 'edit_user'
+  put '/me', to: 'users#update', as: 'update_user'
   get '/me', to: 'users#me', as: 'me'
 end

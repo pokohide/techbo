@@ -4,6 +4,14 @@ class UsersController < ApplicationController
     @entries = @user.entries
   end
 
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+  end
+
   def me
     if user_signed_in?
       @user = current_user

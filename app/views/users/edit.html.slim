@@ -1,0 +1,44 @@
+- content_for :header do
+  = render 'templates/breadcrumb', breadcrumb: { 'マイページ': me_path, \
+    'ユーザ編集': edit_user_path }
+
+.ui.text.container
+  .ui.main.text.container
+    h1.ui.header ユーザ編集
+  
+  = form_for @user, url: update_user_path, html: { method: :put, class: 'ui form' } do |f|
+    - if @user.errors.any?
+      .ui.error.message
+        i.close.icon
+        .header
+          = "#{@user.errors.count}件のエラーがあります。"
+        ul.list
+          - @user.errors.full_messages.each do |msg|
+            li = msg
+
+    = image_tag 'noimage.png', class: 'large ui centered image preview-image'
+    .field
+      label.label.required = f.label :image, 'イメージ'
+      = f.file_field :image
+
+    .field
+      label.label.required = f.label :title, 'タイトル'
+      = f.text_field :title, placeholder: '記事のタイトル'
+
+    .field
+      label.label.required = f.label :body, '本文'
+      = f.text_area :body, rows: 8, placeholder: '本文'
+
+    .two.fields
+      .field
+        .ui.right.labeled.left.icon.input
+          i.tags.icon
+          = f.text_field :tag_list, placeholder: 'タグ'
+          a.ui.tag.label 追加
+          
+      .field
+        .ui.checkbox
+          = f.check_box :is_draft, tabindex: 0, class: 'hidden'
+          label 記事をまだ公開しませんか?
+
+    = f.submit '作成する', class: 'ui button'
