@@ -1,6 +1,10 @@
 .comment id="#{comment.id}"
   .avatar
-    = image_tag 'anonymous.png'
+    - if comment.user_id.present?
+      = link_to user_path(comment.user_id) do
+        = image_tag comment.avatar
+    - else
+      = image_tag comment.avatar
   .content
     .author
       = comment.from

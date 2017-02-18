@@ -2,15 +2,16 @@
   .field
     = cf.text_area :body, placeholder: 'コメント本文'
   .ui.grid.relaxed
+    .six.wide.column
+      = button_tag type: 'submit', class: 'ui blue labeled submit icon button' do
+        i.icon.edit
+        | コメントする
+    .six.wide.column
+      .field
+        = cf.text_field :from, value: current_user.name || '名無し'
     .four.wide.column
       - if user_signed_in?
         = image_tag current_user.avatar_url(:thumb), class: 'ui avatar image'
       - else
         = image_tag 'anonymous.png', class: 'ui avatar image'
-    .six.wide.column
-      .field
-        = cf.text_field :from, value: current_user.name || '名無し'
-    .six.wide.column
-      = button_tag type: 'submit', class: 'ui blue labeled submit icon button' do
-        i.icon.edit
-        | コメントする
+      = cf.hidden_field :avatar, value: current_user.avatar_url(:thumb) || asset_path('anonymous.png')
