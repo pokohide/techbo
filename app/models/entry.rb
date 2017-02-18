@@ -1,5 +1,6 @@
 class Entry < ApplicationRecord
   belongs_to :user
+  has_many :comments
 
   has_attached_file :image,
                     styles: {
