@@ -17,7 +17,7 @@ p Find me in app/views/user/me.html.slim
         | Total Likes
     .statistic
       .value
-        | 1234
+        = @entries.inject(0) { |sum, entry| sum + entry.view }
       .label
         | Total Views
 
