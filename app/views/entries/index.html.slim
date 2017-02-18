@@ -2,8 +2,13 @@
   - @entries.each do |entry|
     .ui.card
       .content
-        .header = entry.title
+        .header
+          = link_to entry.title, entry_path(entry)
         .meta
           span = distance_of_time_in_words_to_now(entry.created_at)
           / ここにタグ
-        p = truncate(entry.body)
+        .description
+          p = entry.body
+      .extra.content
+        i.eye.icon
+        | 121 Views

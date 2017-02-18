@@ -4,6 +4,9 @@
     = link_to 'Work', root_path, class: 'item'
     = link_to 'Company', root_path, class: 'item'
     .right.menu
+      - if user_signed_in?
+        = link_to 'マイページ', user_path
+      - else
       .item
         = link_to 'ログイン', root_path, class: 'ui button'
       .item

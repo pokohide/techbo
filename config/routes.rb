@@ -1,7 +1,19 @@
 Rails.application.routes.draw do
+  get 'user/show'
+
+  get 'user/me'
+
   root to: 'entries#index'
 
-  resources :entries
+  resources :entries do
+    #resources :comments, only: [:create, :destroy]
+  end
 
   devise_for :users
+
+  #devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout' },
+  #                 controllers: { omniauth_callbacks: 'omniauth_callbacks', registrations: 'users/registrations' }
+
+  get '/users/:id', to: 'users#show', as: 'user'
+  get '/me', to: 'users#me', as: 'me'
 end
