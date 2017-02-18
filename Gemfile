@@ -33,6 +33,10 @@ gem 'aws-sdk', '~> 2'
 # for env
 gem 'dotenv-rails'
 
+# markdown
+gem 'redcarpet'
+gem 'coderay'
+
 # json
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
