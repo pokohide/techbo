@@ -5,9 +5,12 @@
     = link_to 'Company', root_path, class: 'item'
     .right.menu
       - if user_signed_in?
-        = link_to 'マイページ', user_path
+        .item
+          = link_to 'マイページ', me_path, class: 'ui button'
+        .item
+          = link_to 'ログアウト', destroy_user_session_path, class: 'ui danger button'
       - else
-      .item
-        = link_to 'ログイン', root_path, class: 'ui button'
-      .item
-        = link_to 'サインイン', root_path, class: 'ui primary button'
+        .item
+          = link_to 'ログイン', new_user_session_path, class: 'ui button'
+        .item
+          = link_to 'サインイン', new_user_registration_path, class: 'ui primary button'

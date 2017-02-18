@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'user/show'
-
-  get 'user/me'
-
   root to: 'entries#index'
 
   resources :entries do
