@@ -1,6 +1,8 @@
 class Entry < ApplicationRecord
   belongs_to :user
   has_many :comments
+  has_many :likes, dependent: :destroy
+
   acts_as_taggable_on :tags
 
   validates :title, presence: true
@@ -24,5 +26,9 @@ class Entry < ApplicationRecord
     else
       'https://s3-ap-northeast-1.amazonaws.com/beeapp-production/no-img.png'
     end
+  end
+
+  def like_user(user_id)
+    likes.find_by(user_id: user_id)
   end
 end
