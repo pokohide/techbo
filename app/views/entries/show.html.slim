@@ -2,16 +2,16 @@
   h1.ui.header = @entry.title
 
   - if @entry.image.present?
-    /= image_tag @entry.image_url(:large), class: 'large ui centered image'
-    = image_tag @entry.image.to_s, class: 'ui fluid image'
+    = image_tag @entry.image.url(:large), class: 'ui fluid image'
 
 .ui.borderless.main.menu
   .ui.text.container
     - @entry.tags.each do |tag|
       = link_to "#{tag.name}(#{tag.taggings_count})", entries_path(tag: tag.name), class: 'item'
     .ui.right.item
-      = image_tag 'anonymous.png', class: 'ui avatar image'
-      span = @entry.user.email
+      span(style='margin-right:5px') Written By
+      = image_tag @entry.user.avatar_url(:thumb), class: 'ui avatar image'
+      span = @entry.user.name
 
 .ui.text.container.entry-body
   = @entry.body

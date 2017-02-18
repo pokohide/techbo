@@ -24,7 +24,8 @@ class User < ApplicationRecord
       avatar.url(style)
       #avater.s3_object(style).url_for(:read, secure: true)
     else
-      'https://s3-ap-northeast-1.amazonaws.com/beeapp-production/no-img.png'
+      asset_path 'anonymous.png'
+      #'https://s3-ap-northeast-1.amazonaws.com/beeapp-production/no-img.png'
     end
   end
 end
