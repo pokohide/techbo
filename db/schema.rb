@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20170218210635) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "view",               default: 0
-    t.integer  "like_count",         default: 0
+    t.integer  "likes_count",        default: 0
   end
 
   create_table "likes", force: :cascade do |t|
