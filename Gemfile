@@ -18,6 +18,7 @@ gem 'devise'
 
 # frontend
 gem 'slim-rails'
+gem 'kaminari'
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
