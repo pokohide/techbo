@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: [:me, :edit, :update]
+
   def show
     @user = User.find(params[:id])
     @entries = @user.entries
@@ -19,12 +21,10 @@ class UsersController < ApplicationController
   end
 
   def me
-    if user_signed_in?
-      @user = current_user
-      @entries = @user.entries
-    else
-      redirect_to root_path
-    end
+    @user = current_user
+    @entries = @user.entries
+    @total_views = @entries.inject(0) { |sum, entry| sum + entry.view }
+    @total_likes = @entries.inject(0) { |sum, entry| sum + entry.likes_count }
   end
 
   private

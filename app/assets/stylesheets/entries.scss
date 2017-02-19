@@ -51,23 +51,6 @@
 }
 
 .diff-view {
-  // ul {
-  //   li {
-  //     list-style-type: none;
-  //
-  //     &.del {
-  //       background: #ffecec;
-  //       padding: 1em;
-  //     }
-  //     &.ins {
-  //       background: #eaffea;
-  //       padding: 1em;
-  //     }
-  //     del, ins {
-  //       text-decoration: none;
-  //     }
-  //   }
-  // }
   .diff{
     overflow:auto;
     ul {

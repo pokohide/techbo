@@ -19,18 +19,16 @@
 .ui.text.container.top-bottom
   .ui.three.statistics
     .statistic
-      .value
-        = @entries.count
+      .value.counter data-count="#{@entries.count}"
       .label
         | Entries
     .statistic
-      .value
-        | 1111
+      
+      .value.counter data-count="#{@total_likes}"
       .label
         | Total Likes
     .statistic
-      .value
-        = @entries.inject(0) { |sum, entry| sum + entry.view }
+      .value.counter data-count="#{@total_views}"
       .label
         | Total Views
 
