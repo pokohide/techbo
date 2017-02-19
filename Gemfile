@@ -24,7 +24,6 @@ gem 'slim-rails'
 gem 'kaminari'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'turbolinks', '~> 5'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 
 # for image

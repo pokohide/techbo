@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
-//= require turbolinks
 //= require semantic-ui
 //= require libs/tag-it
 //= require_tree .
