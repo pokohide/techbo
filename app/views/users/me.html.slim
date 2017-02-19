@@ -1,20 +1,16 @@
 .ui.text.container.top-bottom
-  .ui.existing.segment
-    .ui.grid
-      .nine.wide.column
-        .ui.list
-          .item
-            i.user.icon
-            .content = @user.name || 'Anonymous'
-          .item
-            i.mail.icon
-            .content = @user.email
-      
-      .six.wide.column
-        - if @user.avatar.present?
-          = image_tag @user.avatar.url(:square), class: 'ui fluid image'
-        - else
-          = image_tag 'noimage.png', class: 'ui fluid image'
+  .ui.stackable.borderless.menu
+    .item
+      - if @user.avatar.present?
+        = image_tag @user.avatar.url(:thumb)
+      - else
+        = image_tag 'noimage.png'
+    a.item
+      i.user.icon
+      = @user.name || 'Anonymous'
+    a.item
+      i.mail.icon
+      = @user.email
 
 .ui.text.container.top-bottom
   .ui.three.statistics
@@ -33,36 +29,62 @@
         | Total Views
 
 .ui.text.container.top-bottom
-  .ui.divided.items
-    h3.ui.header 記事一覧
-    - @entries.each do |entry|
-      .item
-        .image
-          = image_tag entry.image.to_s
-        .content
-          = link_to entry.title, entry_path(entry), class: 'header'
-          .meta
-            span.date
-              = distance_of_time_in_words_to_now(entry.created_at)
-              | 前
-          .description
-            = truncate(entry.body, length: 150)
-          .extra
-            - entry.tags.each do |tag|
-              = link_to tag.name, entries_path(tag: tag.name), class: 'ui label'
+  .ui.grid
+    .twelve.wide.stretched.column
+      .ui.segment.entries
+        .ui.divided.items
+          - @entries.each do |entry|
+            .item
+              .image
+                = image_tag entry.image.to_s
+              .content
+                = link_to entry.title, entry_path(entry), class: 'header'
+                .meta
+                  span.date
+                    = distance_of_time_in_words_to_now(entry.created_at)
+                    | 前
+                .description
+                  = truncate(entry.body, length: 150)
+                .extra
+                  - entry.tags.each do |tag|
+                    = link_to tag.name, entries_path(tag: tag.name), class: 'ui label'
+        
+      .ui.segment.likes(style='display:none')
+        .ui.divided.items
+          /- @likes = @user.likes.
+          - @entries.each do |entry|
+            .item
+              .image
+                = image_tag entry.image.to_s
+              .content
+                = link_to entry.title, entry_path(entry), class: 'header'
+                .meta
+                  span.date
+                    = distance_of_time_in_words_to_now(entry.created_at)
+                    | 前
+                .description
+                  = truncate(entry.body, length: 150)
+                .extra
+                  - entry.tags.each do |tag|
+                    = link_to tag.name, entries_path(tag: tag.name), class: 'ui label'
 
-.ui.text.container.top-bottom
-  .ui.feed
-    h3.ui.dividing.header フィード
-    - @entries.each do |entry|
-      .event
-        .label
-          i.pencil.icon
-        .content
-          .summary
-            | 記事「
-            b = entry.title
-            | 」を公開しました。
-            .date
-              = distance_of_time_in_words_to_now(entry.created_at)
-              | 前
+      .ui.segment.feeds(style='display:none')
+        .ui.feed
+          - @entries.each do |entry|
+            .event
+              .label
+                i.pencil.icon
+              .content
+                .summary
+                  | 記事「
+                  b = entry.title
+                  | 」を公開しました。
+                  .date
+                    = distance_of_time_in_words_to_now(entry.created_at)
+                    | 前
+
+    .four.wide.column
+      .ui.vertical.fluid.right.tabular.menu#list-tab
+        a.item.active(data-type='entries') 投稿記事一覧
+        a.item(data-type='likes') いいね一覧
+        a.item(data-type='feeds') フィード

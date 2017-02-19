@@ -12,4 +12,18 @@ $(document).ready(function() {
       complete: function() { $this.text(this.countNum) }
     })
   })
+
+  $('#list-tab .item').on('click', function(e) {
+    e.preventDefault()
+    var type = $(this).attr('data-type')
+
+    $('.entries').hide()
+    $('.likes').hide()
+    $('.feeds').hide()
+
+    $('#list-tab .item.active').removeClass('active')
+    $(this).addClass('active')
+
+    $('.' + type).show()
+  })
 })

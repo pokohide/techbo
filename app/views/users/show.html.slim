@@ -1,9 +1,15 @@
-h1 User#show
-p Find me in app/views/user/show.html.slim
+.ui.text.container.top-bottom
+  .ui.stackable.borderless.menu
+    .item
+      - if @user.avatar.present?
+        = image_tag @user.avatar.url(:thumb)
+      - else
+        = image_tag 'noimage.png'
+    a.item
+      i.user.icon
+      = @user.name || 'Anonymous'
 
-= @user.email
-
-.ui.text.container
+.ui.text.container.top-bottom
   .ui.divided.items
     h3.ui.header 記事一覧
     - @entries.each do |entry|
