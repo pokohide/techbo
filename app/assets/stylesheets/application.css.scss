@@ -12,8 +12,19 @@
  *
  *= require_tree .
  *= require jquery-ui
+ *= require social-share-button
  *= require_self
  */
+
+$size: 40px;
+.social-share-button {
+  .ssb-icon {
+    background-size: $size $size;
+    height: $size;
+    width: $size;
+    margin: 0 5px;
+  }
+}
 
 @import "semantic-ui";
 

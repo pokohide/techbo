@@ -22,6 +22,9 @@
 .ui.text.container.entry-body
   = @entry.body
 
+.ui.text.container.top-bottom
+  = social_share_button_tag(@entry.title)
+
 .ui.text.container
   .ui.threaded.comments
     h3.ui.dividing.header コメント一覧

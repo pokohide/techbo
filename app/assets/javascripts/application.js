@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require semantic-ui
 //= require libs/tag-it
+//= require social-share-button
 //= require_tree .
 
 $(document).ready(function() {
