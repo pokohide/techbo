@@ -9,6 +9,9 @@ class Entry < ApplicationRecord
   validates :body, presence: true
   validates :image, presence: true
 
+  scope :search_by, lambda { |q| where('title Like ? or body Like ?', "%#{q}%", "%#{q}%").order(created_at: :desc) unless q.blank? }
+  scope :desc, -> { order(created_at: :desc) }
+
   has_attached_file :image,
                     styles: {
                       medium: '400x400>',
@@ -23,10 +26,8 @@ class Entry < ApplicationRecord
   def image_url(style=nil, expires_in=90.minutes)
     if image.present?
       image.url(style)
-      #image.s3_object(style).url_for(:read, expires: expires_in).to_s
     else
       asset_path 'noimage.png'
-      #'https://s3-ap-northeast-1.amazonaws.com/beeapp-production/no-img.png'
     end
   end
 

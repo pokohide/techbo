@@ -3,7 +3,21 @@ class EntriesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @entries = Entry.all.page(params[:page])
+    @entries = Entry.page(params[:page]).per(18)
+  end
+
+  def search
+    @entries = if params[:tag].present? && params[:q].present?
+      Entry.tagged_with(params[:tag]).search_by(params[:q]).includes(:tags)
+    elsif params[:tag].present?
+      Entry.tagged_with(params[:tag]).includes(:tags).desc
+    elsif params[:q].present?
+      Entry.search_by(params[:q]).includes(:tags)
+    else
+      Entry
+    end
+    @entries = @entries.page(params[:page]).per(18)
+    render 'index'
   end
 
   def show

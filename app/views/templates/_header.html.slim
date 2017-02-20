@@ -5,7 +5,7 @@
     = link_to 'Company', root_path, class: 'item'
     .right.menu
       .item
-        = form_tag '/', method: :get, enforce_utf8: false, class: 'ui action transparent input' do
+        = form_tag '/entries/search', method: :get, enforce_utf8: false, class: 'ui action transparent input' do
           = text_field_tag :q, '', placeholder: 'Search...'
           = button_tag type: 'submit', class: 'ui button', class: 'ui teal right icon button' do
             i.search.icon
