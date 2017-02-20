@@ -46,9 +46,10 @@
       label.label = f.label :tag_list, 'タグ'
       = f.text_field :tag_list, placeholder: 'タグ'
 
-    .field
-      .ui.checkbox
-        = f.check_box :is_draft, tabindex: 0, class: 'hidden'
-        label 記事をまだ公開しませんか?
+    - unless @entry.is_draft?
+      .field
+        .ui.checkbox
+          = f.check_box :is_draft, tabindex: 0
+          label 記事をまだ公開しませんか?
       
     = f.submit '更新する', class: 'ui button'

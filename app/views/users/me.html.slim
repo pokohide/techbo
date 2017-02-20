@@ -39,7 +39,14 @@
           - @entries.each do |entry|
             .item
               .image
+                - if entry.is_draft?
+                  .ui.blue.ribbon.label
+                    | ドラフト
+                - else
+                  .ui.red.ribbon.label
+                    | 公開
                 = image_tag entry.image.to_s
+                
               .content
                 = link_to entry.title, entry_path(entry), class: 'header'
                 .meta

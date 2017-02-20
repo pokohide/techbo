@@ -11,6 +11,7 @@ class Entry < ApplicationRecord
 
   scope :search_by, lambda { |q| where('title Like ? or body Like ?', "%#{q}%", "%#{q}%").order(created_at: :desc) unless q.blank? }
   scope :desc, -> { order(created_at: :desc) }
+  scope :not_draft, -> { where(is_draft: false) }
 
   has_attached_file :image,
                     styles: {
