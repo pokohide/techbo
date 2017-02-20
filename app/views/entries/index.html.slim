@@ -8,7 +8,7 @@
             | 前
           = image_tag entry.user.avatar_url(:thumb), class: 'ui avatar image'
           = link_to entry.user.name, user_path(entry.user)
-          .header(style='margin-top: 5px;') = entry.title
+          .header(style='margin-top:7px;') = entry.title
         .blurring.dimmable.image
           .ui.dimmer
             .content
@@ -16,7 +16,7 @@
                 = link_to '詳細', entry_path(entry), class: 'ui inverted button'
           = image_tag entry.image_url(:medium)
         .content
-          .description
+          .description(style='height:60px')
             = truncate(entry.body, length: 100)
         .extra.content
           span.right.floated
