@@ -40,6 +40,7 @@ gem 'diffy'
 
 # like
 gem 'counter_culture'
+gem 'social-share-button'
 
 # json
 gem 'jbuilder', '~> 2.5'
