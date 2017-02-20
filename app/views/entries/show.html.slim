@@ -15,7 +15,7 @@
     .item
       .ui.tag.labels
         - @entry.tags.each do |tag|
-          = link_to "#{tag.name}", entries_path(tag: tag.name), class: 'ui label'
+          = link_to "#{tag.name}", search_entries_path(tag: tag.name), class: 'ui label'
     .right.item
       .item
         span(style='margin-right:5px') Written By
