@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   resources :entries do
     resources :comments, only: [:create, :destroy]
     resources :likes, only: [:create, :destroy]
-    # collection do
-    #   get 'tag/:tag_name'
-    # end
+    collection do
+      get 'search'
+    end
   end
 
   devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout' } do

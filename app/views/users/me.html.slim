@@ -1,3 +1,6 @@
+- content_for :header do
+  = render 'templates/breadcrumb', breadcrumb: { 'マイページ': me_path }
+
 .ui.text.container.top-bottom
   .ui.stackable.borderless.menu
     .item
@@ -47,7 +50,7 @@
                   = truncate(entry.body, length: 150)
                 .extra
                   - entry.tags.each do |tag|
-                    = link_to tag.name, entries_path(tag: tag.name), class: 'ui label'
+                    = link_to tag.name, search_entries_path(tag: tag.name), class: 'ui label'
         
       .ui.segment.likes(style='display:none')
         .ui.divided.items

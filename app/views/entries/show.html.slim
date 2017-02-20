@@ -1,3 +1,6 @@
+- content_for :header do
+  = render 'templates/breadcrumb', breadcrumb: { "#{@entry.title}": entry_path(@entry) }
+
 .ui.text.container
   h1.ui.header = @entry.title
 
@@ -12,7 +15,7 @@
     .item
       .ui.tag.labels
         - @entry.tags.each do |tag|
-          = link_to "#{tag.name}", entries_path(tag: tag.name), class: 'ui label'
+          = link_to "#{tag.name}", search_entries_path(tag: tag.name), class: 'ui label'
     .right.item
       .item
         span(style='margin-right:5px') Written By
@@ -21,6 +24,9 @@
 
 .ui.text.container.entry-body
   = @entry.body
+
+.ui.text.container.top-bottom
+  = social_share_button_tag(@entry.title)
 
 .ui.text.container
   .ui.threaded.comments

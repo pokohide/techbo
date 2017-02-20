@@ -19,4 +19,5 @@
             = f.password_field :password_confirmation, autocomplete: 'off', placeholder: 'パスワード確認'
             
         = f.submit 'Sign up', class: 'ui fluid large teal submit button'
-    = render "devise/shared/links"
+    .ui.message
+      = link_to 'Log in', new_session_path(resource_name), style: 'margin: 0 5px'
