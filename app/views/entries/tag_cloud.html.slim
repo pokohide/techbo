@@ -1,4 +1,4 @@
-.ui.text.container
+.ui.text.container.top-bottom
   .ui.segment
     - tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
-      = link_to tag.name, search_entries_path(tag: tag.name), class: css_class
+      = link_to tag.name, search_entries_path(tag: tag.name), class: css_class, style: 'margin: 3px 5px'

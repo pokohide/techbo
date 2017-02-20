@@ -1,8 +1,9 @@
 .ui.large.top.fixed.menu
   .ui.container
-    = link_to 'Home', root_path, class: 'active item'
-    = link_to 'Work', root_path, class: 'item'
-    = link_to 'Company', root_path, class: 'item'
+    = link_to root_path, class: 'header item' do
+      = image_tag 'techbo.png', class: 'logo'
+      | Techbo
+
     .right.menu
       .item
         = form_tag '/entries/search', method: :get, enforce_utf8: false, class: 'ui action transparent input' do
