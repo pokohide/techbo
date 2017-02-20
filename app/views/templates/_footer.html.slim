@@ -1,18 +1,7 @@
-.ui.inverted.vertical.footer.segment
-  .ui.container
-    .ui.stackable.inverted.divided.equal.height.stackable.grid
-      .three.wide.column
-        h4.ui.inverted.header About
-        .ui.inverted.link.list
-          = link_to 'Sitemap', '#', class: 'item'
-          = link_to 'Contact Us', '#', class: 'item'
-          = link_to 'Religious Celemonies', '#', class: 'item'
-      .three.wide.column
-        h4.ui.inverted.header Services
-        .ui.inverted.link.list
-        = link_to 'Sitemap', '#', class: 'item'
-        = link_to 'Contact Us', '#', class: 'item'
-        = link_to 'Religious Celemonies', '#', class: 'item'  
-      .seven.wide.column
-        h4.ui.inverted.header Footer Header
-        p Extra space for a call to action inside the footer that could help re-engage users.</p>
+.ui.vertical.footer.segment
+  .ui.inverted.section.divide
+  .ui.center.aligned.container
+    = image_tag 'techbo.png', class: 'ui centered mini image'
+    .ui.horizontal.small.divided.link.list
+      = link_to 'TOP', root_path, class: 'item'
+      = link_to 'タグ一覧', tag_cloud_path, class: 'item'
