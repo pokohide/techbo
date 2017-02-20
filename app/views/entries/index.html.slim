@@ -7,7 +7,7 @@
             = distance_of_time_in_words_to_now(entry.created_at)
             | 前
           = image_tag entry.user.avatar_url(:thumb), class: 'ui avatar image'
-          = entry.user.name
+          = link_to entry.user.name, user_path(entry.user)
           .header(style='margin-top: 5px;') = entry.title
         .blurring.dimmable.image
           .ui.dimmer
@@ -15,8 +15,6 @@
               .center
                 = link_to '詳細', entry_path(entry), class: 'ui inverted button'
           = image_tag entry.image_url(:medium)
-        /.image
-        /  = image_tag entry.image_url(:medium)
         .content
           .description
             = truncate(entry.body, length: 100)
