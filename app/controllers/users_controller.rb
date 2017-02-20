@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @entries = @user.not_draft.entries
+    @entries = @user.entries.not_draft
   end
 
   def edit

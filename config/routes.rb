@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
     collection do
       get 'search'
+      get 'draft/:uid', to: 'entries#draft'
     end
   end
 

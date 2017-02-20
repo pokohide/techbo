@@ -1,4 +1,5 @@
 class Entry < ApplicationRecord
+  include Rails.application.routes.url_helpers
   belongs_to :user
   has_many :comments
   has_many :likes, dependent: :destroy
@@ -23,6 +24,14 @@ class Entry < ApplicationRecord
                     path: 'users/:style/:id.:extension',
                     url: ':s3_domain_url'
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+
+  def set_uid
+    self.uid ||= SecureRandom.hex(6)
+  end
+
+  def draft_url
+    URI.join(root_url, "entries/draft/#{uid}").to_s
+  end
 
   def image_url(style=nil, expires_in=90.minutes)
     if image.present?

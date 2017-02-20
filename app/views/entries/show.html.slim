@@ -35,3 +35,13 @@
       - @entry.comments.each do |comment|
         == render partial: 'comments/comment', locals: { comment: comment }
   == render partial: 'comments/form', locals: { entry: @entry }
+
+- if @entry.is_draft?
+  .ui.modal
+    .close.icon
+    .header この記事はまだ公開されていません。
+    .content
+      = link_to @entry.draft_url, @entry.draft_url
+      | で共有できます。
+    .actions
+      .ui.button.ok OK

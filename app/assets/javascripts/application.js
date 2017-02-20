@@ -21,4 +21,12 @@
 $(document).ready(function() {
   $('.ui.dropdown').dropdown({ on: 'hover' })
   $('.special.cards .image').dimmer({ on: 'hover' })
+
+  if(gon.uid) {
+    $('.ui.modal').modal('show')
+    $('.ui.modal .button.ok').on('click', function(e) {
+      e.preventDefault()
+      $('.ui.modal').modal('close')
+    })
+  }
 })

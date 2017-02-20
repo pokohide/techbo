@@ -22,7 +22,17 @@ class EntriesController < ApplicationController
 
   def show
     @comment = Comment.new
-    @entry.update(view: @entry.view + 1)
+    if @entry.is_draft?
+      redirect_to(root_path, alert: '存在しない記事です')
+    else
+      @entry.update(view: @entry.view + 1)
+    end
+  end
+
+  def draft
+    @entry = Entry.find_by(uid: params[:uid])
+    gon.uid = @entry.uid
+    render 'show'
   end
 
   def new
@@ -31,9 +41,15 @@ class EntriesController < ApplicationController
 
   def create
     @entry = current_user.entries.new(entry_params)
+    @entry.set_uid if @entry.is_draft?
     if @entry.save
-      flash[:success] = '記事を作成しました。'
-      redirect_to entry_path(@entry)
+      if @entry.is_draft?
+        flash[:success] = '記事を作成しました。この記事はまだ公開されていません。'
+        redirect_to draft_entries(@entry.uid)
+      else
+        flash[:success] = '記事を作成しました。'
+        redirect_to entry_path(@entry)
+      end
     else
       render 'new'
     end
