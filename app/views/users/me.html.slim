@@ -58,6 +58,8 @@
                 .extra
                   - entry.tags.each do |tag|
                     = link_to tag.name, search_entries_path(tag: tag.name), class: 'ui label'
+                  .ui.right.floated.button
+                    = link_to 'Edit', edit_entry_path(entry)
         
       .ui.segment.likes(style='display:none')
         .ui.divided.items

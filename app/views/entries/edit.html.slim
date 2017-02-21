@@ -46,7 +46,7 @@
       label.label = f.label :tag_list, 'タグ'
       = f.text_field :tag_list, placeholder: 'タグ'
 
-    - unless @entry.is_draft?
+    - if @entry.is_draft?
       .field
         .ui.checkbox
           = f.check_box :is_draft, tabindex: 0
