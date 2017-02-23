@@ -1,0 +1,24 @@
+- cache(entry) do
+  .ui.card id="entry-#{entry.id}"
+    .content
+      .right.floated.meta
+        = distance_of_time_in_words_to_now(entry.created_at)
+        | 前
+      = image_tag entry.user.avatar_url(:thumb), class: 'ui avatar image'
+      = link_to entry.user.name, user_path(entry.user)
+      .header(style='margin-top:7px;') = entry.title
+    .blurring.dimmable.image
+      .ui.dimmer
+        .content
+          .center
+            = link_to '詳細', entry_path(entry), class: 'ui inverted button'
+      = image_tag entry.image_url(:medium)
+    .content
+      .description(style='height:60px')
+        = truncate(entry.body, length: 100)
+    .extra.content
+      span.right.floated
+        i.eye.icon
+        = "#{entry.view} Views"
+      .like-field
+        == render partial: 'entries/like', locals: { entry: entry }

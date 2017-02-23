@@ -1,18 +1,19 @@
-.comment id="#{comment.id}"
-  .avatar
-    - if comment.user_id.present?
-      = link_to user_path(comment.user_id) do
+- cache(comment) do
+  .comment id="#{comment.id}"
+    .avatar
+      - if comment.user_id.present?
+        = link_to user_path(comment.user_id) do
+          = image_tag comment.avatar
+      - else
         = image_tag comment.avatar
-    - else
-      = image_tag comment.avatar
-  .content
-    a.author
-      = comment.from
-    .metadata
-      .date
-        = distance_of_time_in_words_to_now(comment.created_at)
-        | 前
-    .text
-      = comment.body
-    .actions
-      a.reply.comment-reply data-reply="#{comment.from}" Reply
+    .content
+      a.author
+        = comment.from
+      .metadata
+        .date
+          = distance_of_time_in_words_to_now(comment.created_at)
+          | 前
+      .text
+        = comment.body
+      .actions
+        a.reply.comment-reply data-reply="#{comment.from}" Reply

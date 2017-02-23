@@ -3,7 +3,7 @@ class EntriesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @entries = Entry.not_draft.page(params[:page]).per(18)
+    @entries = Entry.not_draft.page(params[:page]).per(3)
   end
 
   def search
@@ -22,6 +22,8 @@ class EntriesController < ApplicationController
 
   def show
     @comment = Comment.new
+    @comments = @entry.comments
+    @user = @entry.user
     if @entry.is_draft?
       redirect_to(root_path, alert: '存在しない記事です')
     else
