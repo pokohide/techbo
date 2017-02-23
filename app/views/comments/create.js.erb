@@ -1,6 +1,5 @@
-console.log('hoge')
 <% unless @err %>
-  alert('エラー発生');
+  $('.comments .error-field').html('<%= j(render partial: "comments/error", locals: {comment: @comment}) %>')
 <% else %>
   $('#comment_body').val('');
   $('.comments-container').append('<%= j(render partial: "comments/comment", locals: {comment: @comment}) %>');

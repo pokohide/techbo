@@ -1,0 +1,6 @@
+.ui.error.message
+  .header
+    = "#{@comment.errors.count}件のエラーがあります。"
+  ul.list
+    - @comment.errors.full_messages.each do |msg|
+      li = msg

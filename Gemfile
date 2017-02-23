@@ -35,7 +35,7 @@ gem 'aws-sdk', '~> 2'
 gem 'dotenv-rails'
 
 # User
-gem 'device'
+gem 'devise'
 gem 'counter_culture'
 gem 'social-share-button'
 
