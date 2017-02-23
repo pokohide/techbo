@@ -1,0 +1,11 @@
+.event
+  .label
+    i.pencil.icon
+  .content
+    .summary
+      | 記事「
+      b = feed.title
+      | 」を公開しました。
+      .date
+        = distance_of_time_in_words_to_now(feed.created_at)
+        | 前

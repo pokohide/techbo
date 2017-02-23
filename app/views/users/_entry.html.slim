@@ -1,0 +1,25 @@
+.item
+  .image
+    - if local_assigns[:is_me]
+      - if entry.is_draft?
+        .ui.blue.ribbon.label
+          | ドラフト
+      - else
+        .ui.red.ribbon.label
+          | 公開
+    = image_tag entry.image.to_s
+    
+  .content
+    = link_to entry.title, entry_path(entry), class: 'header'
+    .meta
+      span.date
+        = distance_of_time_in_words_to_now(entry.created_at)
+        | 前
+    .description
+      = truncate(entry.body, length: 150)
+    .extra
+      - entry.tags.each do |tag|
+        = link_to tag.name, search_entries_path(tag: tag.name), class: 'ui label'
+      - if local_assigns[:is_me]
+        .ui.right.floated.button
+          = link_to 'Edit', edit_entry_path(entry)

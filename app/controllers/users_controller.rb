@@ -22,7 +22,8 @@ class UsersController < ApplicationController
 
   def me
     @user = current_user
-    @entries = @user.entries
+    @entries = @user.entries.includes(:tags)
+    @likes = Entry.find(@user.likes.map(&:entry_id))
     @total_views = @entries.inject(0) { |sum, entry| sum + entry.view }
     @total_likes = @entries.inject(0) { |sum, entry| sum + entry.likes_count }
   end

@@ -4,7 +4,13 @@
 .ui.text.container
   h1.ui.header = @entry.title
 
-  - if @entry.image.present?
+  .ui.fluid.image
+    - if user_signed_in? && @entry.liked_by?(current_user.id)
+      .ui.red.left.corner.label
+        i.heart.icon
+    - else
+      .ui.left.corner.label
+        i.heart.icon
     = image_tag @entry.image.url(:large), class: 'ui fluid image'
 
 .ui.secondary.menu

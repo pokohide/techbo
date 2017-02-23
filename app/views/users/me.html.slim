@@ -37,63 +37,17 @@
       .ui.segment.entries
         .ui.divided.items
           - @entries.each do |entry|
-            .item
-              .image
-                - if entry.is_draft?
-                  .ui.blue.ribbon.label
-                    | ドラフト
-                - else
-                  .ui.red.ribbon.label
-                    | 公開
-                = image_tag entry.image.to_s
-                
-              .content
-                = link_to entry.title, entry_path(entry), class: 'header'
-                .meta
-                  span.date
-                    = distance_of_time_in_words_to_now(entry.created_at)
-                    | 前
-                .description
-                  = truncate(entry.body, length: 150)
-                .extra
-                  - entry.tags.each do |tag|
-                    = link_to tag.name, search_entries_path(tag: tag.name), class: 'ui label'
-                  .ui.right.floated.button
-                    = link_to 'Edit', edit_entry_path(entry)
+            == render partial: 'users/entry', locals: { entry: entry, is_me: true }
         
-      .ui.segment.likes(style='display:none')
+      .ui.segment.likes.is-hidden
         .ui.divided.items
-          /- @likes = @user.likes.
-          - @entries.each do |entry|
-            .item
-              .image
-                = image_tag entry.image.to_s
-              .content
-                = link_to entry.title, entry_path(entry), class: 'header'
-                .meta
-                  span.date
-                    = distance_of_time_in_words_to_now(entry.created_at)
-                    | 前
-                .description
-                  = truncate(entry.body, length: 150)
-                .extra
-                  - entry.tags.each do |tag|
-                    = link_to tag.name, entries_path(tag: tag.name), class: 'ui label'
+          - @likes.each do |entry|
+            == render partial: 'users/like_entry', locals: { entry: entry }
 
-      .ui.segment.feeds(style='display:none')
+      .ui.segment.feeds.is-hidden
         .ui.feed
-          - @entries.each do |entry|
-            .event
-              .label
-                i.pencil.icon
-              .content
-                .summary
-                  | 記事「
-                  b = entry.title
-                  | 」を公開しました。
-                  .date
-                    = distance_of_time_in_words_to_now(entry.created_at)
-                    | 前
+          - @entries.each do |feed|
+            == render partial: 'users/feed', locals: { feed: feed }
 
     .four.wide.column
       .ui.vertical.fluid.right.tabular.menu#list-tab

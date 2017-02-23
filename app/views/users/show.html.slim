@@ -16,15 +16,4 @@
   .ui.divided.items
     h3.ui.header 記事一覧
     - @entries.each do |entry|
-      .item
-        .image
-          = image_tag entry.image.to_s
-        .content
-          = link_to entry.title, entry_path(entry), class: 'header'
-          .meta
-            span.date = distance_of_time_in_words_to_now(entry.created_at)
-          .description
-            = truncate(entry.body, length: 150)
-          .extra
-            .ui.label IMAX
-            .ui.label HOGEHOGE
+      == render partial: 'users/entry', locals: { entry: entry }
