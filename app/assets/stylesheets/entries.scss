@@ -41,6 +41,68 @@
 
     .entry-body {
       padding: 3em;
+      font-family: "ヒラギノ角ゴ Pro W3",メイリオ,Osaka,Arial,Verdana,"ＭＳ Ｐゴシック",sans-serif;
+      font-size: 14px;
+      line-height: 2.0em;
+      letter-spacing: 0.8pt;
+      color: #444;
+      p, ol, ul, blockquote, pre, code {
+        line-height: 18px;
+        margin-bottom: 18px;
+        /* 1.5em provides good vertical spacing ( = 150% of the font-size) */
+        line-height: 1.5em;
+        margin-bottom: 1.5em;
+      }
+
+      h1 {
+      	color: #262626;
+      	font-family: "Enriqueta", serif;
+      	font-size: 44px;
+      	line-height: 48px;
+      	margin: 0 0 30px;
+      }
+      h2 {
+      	color: #262626;
+      	font-family: "Enriqueta", serif;
+      	font-size: 32px;
+      	font-weight: normal;
+      	line-height: 42px;
+      	margin: 0 0 24px;
+      	padding: 12px 0 0;
+      }
+      h3 {
+      	color: #c73036;
+      	font-family: "Enriqueta", serif;
+      	font-size: 18px;
+      	font-weight: bold;
+      	line-height: 24px;
+      	margin: 0 0 24px;
+      	padding: 12px 0 0;
+      	text-transform: uppercase;
+      }
+      p {
+      	color: #2f2f2f;
+      	font-family: Georgia, serif;
+      	font-size: 17px;
+      	line-height: 24px;
+      	margin: 0 0 24px;
+      }
+      .post-info {
+      	color: #aaaaaa;
+      	font-family: Georgia, serif;
+      	font-size: 12px;
+      	font-style: italic;
+      	line-height: 12px;
+      	padding: 24px 0;
+      }
+      .post-info a {
+      	color: #c73036;
+      	font-family: "Enriqueta", serif;
+      	font-style: normal;
+      	font-weight: bold;
+      	text-decoration: none;
+      	text-transform: uppercase;
+      }
     }
 
     .comments-container {

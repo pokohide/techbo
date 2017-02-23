@@ -29,7 +29,7 @@
         span = @user.name
 
 .ui.text.container.entry-body
-  = @entry.body
+  = markdown(@entry.body)
 
 .ui.text.container.top-bottom
   = social_share_button_tag(@entry.title)
