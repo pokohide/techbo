@@ -1,6 +1,15 @@
 # Techbo
 技術者向けのTech Blog
 
+# 技術
+|           | Version |
+|:---------:|:-------:|
+|Ruby       | 2.2.3   |
+|Rails      | 5.0.1   |
+|Semantic UI| 2.2     |
+|Heroku     |         |
+|Postgres   |         |
+
 # 実装したこと
 - ログイン機能
 - 画像投稿
@@ -21,14 +30,14 @@
 ## ログイン機能
 メールアドレスでのログインを実装しました。
 
-![log-in scene](https://github.com/hyde2able/techbo/images/login.png)
+![log-in scene](https://github.com/hyde2able/techbo/blob/master/images/login.png?raw=true)
 
 ## 画像投稿
 paperclipを用いて、AWS S3に画像を保存しています。
 パフォーマンス向上のために`lazyload.js`を用いて遅延ロードを実装しています。
 また、画像投稿のさいに、変更後の画像をすぐに確認できるようにプレビュー機能を実装しました。
 
-![log-in scene](https://github.com/hyde2able/techbo/images/upload.png)
+![upload scene](https://github.com/hyde2able/techbo/blob/master/images/upload.png?raw=true)
 
 ## 記事投稿
 画像に紐付いた記事を投稿できます。
@@ -36,15 +45,44 @@ paperclipを用いて、AWS S3に画像を保存しています。
 本文はマークダウンで書いた記事をプレビュータブで確認できます。
 記事を「まだ公開しない」にチェックすると、記事はドラフト状態になって、共有リンクを発行します。
 
-![log-in scene](https://github.com/hyde2able/techbo/images/upload-entry.png)
+![upload-entry scene](https://github.com/hyde2able/techbo/blob/master/images/upload-entry.png?raw=true)
 
+## 記事にコメント機能
+投稿されている記事に誰でもコメントが出来ます。
+ログインユーザはサムネイルや投稿名が勝手に補完されますが、これは編集が可能です。
+投稿コメントはAjax処理で投稿されるので、画面遷移はしません。
 
-# 技術
-|           | Version |
-|:---------:|:-------:|
-|Ruby       | 2.2.3   |
-|Rails      | 5.0.1   |
-|Semantic UI| 2.2     |
-|Heroku     |         |
-|Postgres   |         |
-|
+## シェア機能
+記事はTwitetr, Facebook, Google +,Hacker Newsに簡単にシェア出来ます。
+
+## 記事のいいね機能
+ログインユーザであれば記事にいいね！を出来ます。
+マイページでいいね！をした記事の一覧、自分の投稿記事の総いいね数などが見れます。
+いいね！はAjax処理で実行され、いいねカウントは`counter_culture`でキャッシュを取っている
+ため、いいねをした時に回数を更新することで、無駄なSQLを吐かないようにしています。
+
+## 検索機能
+投稿記事のタグでの完全一致検索とタイトル、本文のあいまい検索で実装しています。
+
+## マイページの実装
+ログインユーザであれば、ヘッダー右側にマイページへのリンクが表示されます。
+マイページでは
+- ユーザ情報
+- 投稿記事数
+- 投稿記事の合計いいね数
+- 投稿記事の合計View数
+- 投稿記事一覧
+- いいね記事の一覧
+- アクティビティログ
+を確認することが出来ます。
+
+親しみの持ちやすいUIを意識しました。
+
+![mypage scene](https://github.com/hyde2able/techbo/blob/master/images/mypage.png?raw=true)
+
+## キャッシュで高速化
+ところどころでキャッシュを取っているので、
+
+## 親しみやすいデザイン
+CSS Frameworkとして`Semantic ui`を採用しました。
+色々なモジュールなどがあるので、それらを組み合わせて白を基調としたシンプルなUIを目指しました。
