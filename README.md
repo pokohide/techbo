@@ -1,14 +1,20 @@
 # Techbo
 技術者向けのTech Blog
+https://techbo.herokuapp.com/
 
 # 技術
-|           | Version |
-|:---------:|:-------:|
-|Ruby       | 2.2.3   |
-|Rails      | 5.0.1   |
-|Semantic UI| 2.2     |
-|Heroku     |         |
-|Postgres   |         |
+|技術要素|名前|備考|
+|:---:|:---------:|:-------:|
+|言語|Ruby||v2.3.3|
+|F/W|Rails|v5.0.1|
+|API|Jbuilder||
+|テンプレートエンジン|Slim||
+|altJS|CoffeeScript||
+|CSS Framework|Semantic UI|v2.2|
+|Pager|Kaminari||
+|画像|Paperclip + S3||
+|DB|Postgres||
+|PaaS|Heroku||
 
 # 実装したこと
 - ログイン機能
@@ -54,7 +60,7 @@ paperclipを用いて、AWS S3に画像を保存しています。
 投稿コメントはAjax処理で投稿されるので、画面遷移はしません。
 また、本文が何も入力されていないなど、バリデーションに引っかかった場合は、非同期でエラー文章を表示します。
 
-![upload-entry scene](https://github.com/hyde2able/techbo/blob/master/images/comment.png?raw=true)
+![comment](https://github.com/hyde2able/techbo/blob/master/images/comment.png?raw=true)
 
 
 ## シェア機能
@@ -86,7 +92,7 @@ paperclipを用いて、AWS S3に画像を保存しています。
 ![mypage scene](https://github.com/hyde2able/techbo/blob/master/images/mypage.png?raw=true)
 
 ## キャッシュで高速化
-ところどころでキャッシュを取っているので、
+ログイン時のヘッダーのサムネイル画像部分や、記事一覧などはフラグメントキャッシュを取っています。
 
 ## 親しみやすいデザイン
 CSS Frameworkとして`Semantic ui`を採用しました。
