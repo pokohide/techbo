@@ -29,6 +29,7 @@
 
 ## ログイン機能
 メールアドレスでのログインを実装しました。
+ログイン機能は`Devise`を用いて実装し、ユーザネームとサムネイルもカラムとして保持するようにしました。
 
 ![log-in scene](https://github.com/hyde2able/techbo/blob/master/images/login.png?raw=true)
 
@@ -51,6 +52,10 @@ paperclipを用いて、AWS S3に画像を保存しています。
 投稿されている記事に誰でもコメントが出来ます。
 ログインユーザはサムネイルや投稿名が勝手に補完されますが、これは編集が可能です。
 投稿コメントはAjax処理で投稿されるので、画面遷移はしません。
+また、本文が何も入力されていないなど、バリデーションに引っかかった場合は、非同期でエラー文章を表示します。
+
+![upload-entry scene](https://github.com/hyde2able/techbo/blob/master/images/comment.png?raw=true)
+
 
 ## シェア機能
 記事はTwitetr, Facebook, Google +,Hacker Newsに簡単にシェア出来ます。
