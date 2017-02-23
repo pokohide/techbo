@@ -22,7 +22,6 @@ class EntriesController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = @entry.comments
     @user = @entry.user
     if @entry.is_draft?
       redirect_to(root_path, alert: '存在しない記事です')

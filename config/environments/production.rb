@@ -35,6 +35,8 @@ Rails.application.configure do
     }
   }
 
+  Rails.application.routes.default_url_options[:host] = 'https://techbo.herokuapp.com/'
+
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.

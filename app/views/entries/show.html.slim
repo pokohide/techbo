@@ -32,8 +32,8 @@
   .ui.threaded.comments
     h3.ui.dividing.header コメント一覧
     .comments-containerå
-      - cache(['comments', @comments.map(&:id), @comments.maximum(:updated_at)]) do
-        - @comments.each do |comment|
+      - cache @entry.comments do
+        - @entry.comments.each do |comment|
           == render partial: 'comments/comment', locals: { comment: comment }
   == render partial: 'comments/form', locals: { entry: @entry }
 

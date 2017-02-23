@@ -8,18 +8,19 @@
       .item
         = form_tag '/entries/search', method: :get, enforce_utf8: false, class: 'ui action transparent input' do
           = text_field_tag :q, '', placeholder: 'Search...'
-          = button_tag type: 'submit', class: 'ui button', class: 'ui teal right icon button' do
+          = button_tag type: 'submit', class: 'ui teal right icon button' do
             i.search.icon
         
       - if user_signed_in?
-        .ui.right.floated.dropdown.item
-          = image_tag current_user.avatar_url(:thumb), class: 'ui avatar image'
-          b.username = current_user.name
-          i.dropdown.icon
-          .menu
-            = link_to 'マイページ', me_path, class: 'item'
-            = link_to 'プロフィール編集', edit_user_path, class: 'item'
-            = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'item'
+        - cache current_user do
+          .ui.right.floated.dropdown.item
+            = image_tag current_user.avatar_url(:thumb), class: 'ui avatar image'
+            b.username = current_user.name
+            i.dropdown.icon
+            .menu
+              = link_to 'マイページ', me_path, class: 'item'
+              = link_to 'プロフィール編集', edit_user_path, class: 'item'
+              = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'item'
       - else
         .item
           .ui.buttons
