@@ -23,10 +23,8 @@ class User < ApplicationRecord
   def avatar_url(style)
     if avatar.present?
       avatar.url(style)
-      #avater.s3_object(style).url_for(:read, secure: true)
     else
-      asset_path 'anonymous.png'
-      #'https://s3-ap-northeast-1.amazonaws.com/beeapp-production/no-img.png'
+      ActionController::Base.helpers.asset_path('male1.png')
     end
   end
 end

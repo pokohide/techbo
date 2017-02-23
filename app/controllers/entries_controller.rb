@@ -8,7 +8,7 @@ class EntriesController < ApplicationController
 
   def search
     @entries = if params[:tag].present? && params[:q].present?
-      Entry.not_draft.tagged_with(params[:tag]).search_by(params[:q]).includes(:tags)
+      Entry.not_draft.tagged_with(params[:tag]).search_by(params[:q])
     elsif params[:tag].present?
       Entry.not_draft.tagged_with(params[:tag]).includes(:tags).desc
     elsif params[:q].present?

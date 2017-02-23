@@ -37,7 +37,7 @@ class Entry < ApplicationRecord
     if image.present?
       image.url(style)
     else
-      asset_path 'noimage.png'
+      ActionController::Base.helpers.asset_path('noimage.png')
     end
   end
 
