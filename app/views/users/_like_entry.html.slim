@@ -2,7 +2,7 @@
   .image
     .ui.red.left.corner.label
       i.heart.icon
-    = image_tag entry.image.to_s
+    = lazy_image_tag entry.image.to_s
   .content
     = link_to entry.title, entry_path(entry), class: 'header'
     .meta

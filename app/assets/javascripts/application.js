@@ -15,12 +15,14 @@
 //= require jquery_ujs
 //= require semantic-ui
 //= require libs/tag-it
+//= require libs/lazyload
 //= require social-share-button
 //= require_tree .
 
 $(document).ready(function() {
   $('.ui.dropdown').dropdown({ on: 'hover' })
   $('.special.cards .image').dimmer({ on: 'hover' })
+  $('img.lazy').lazyload({ effect : "fadeIn" })
 
   if(gon.uid) {
     $('.ui.modal').modal('show')

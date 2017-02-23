@@ -12,7 +12,7 @@
         .content
           .center
             = link_to '詳細', entry_path(entry), class: 'ui inverted button'
-      = image_tag entry.image_url(:medium)
+      = lazy_image_tag entry.image_url(:medium)
     .content
       .description(style='height:60px')
         = truncate(entry.body, length: 100)
