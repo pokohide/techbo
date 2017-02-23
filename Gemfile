@@ -43,6 +43,8 @@ gem 'social-share-button'
 gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 
+gem 'pg', group: :production
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'sqlite3'
