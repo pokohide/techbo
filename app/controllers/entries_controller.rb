@@ -3,7 +3,7 @@ class EntriesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @entries = Entry.not_draft.page(params[:page]).per(3)
+    @entries = Entry.not_draft.page(params[:page]).per(18)
   end
 
   def search
@@ -80,7 +80,7 @@ class EntriesController < ApplicationController
   private
 
   def set_entry
-    @entry = Entry.find(params[:id])
+    @entry = Entry.find(params[:id]).includes(:)
   end
 
   def entry_params

@@ -2,9 +2,7 @@ class CommentsController < ApplicationController
   def create
     @entry = Entry.find(params[:entry_id])
     @comment = @entry.comments.new(comment_params)
-    if user_signed_in?
-      @comment.user_id = current_user.id
-    end
+    @comment.user_id = current_user.id if user_signed_in?
     @err = @comment.save
   end
 

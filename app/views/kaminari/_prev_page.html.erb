@@ -1,0 +1,5 @@
+<% unless current_page.first? %>
+    <%= link_to url, rel:'prev', remote: remote, class:"icon item" do%>
+        <i class="angle left icon"></i>
+    <% end %>
+<% end %>
